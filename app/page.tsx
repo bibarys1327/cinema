@@ -1,3 +1,8 @@
 export default function Home() {
-  return <div>Home</div>;
+  console.log("Movies");
+  return (
+    <div>
+      <h1>Movies</h1>
+    </div>
+  );
 }
