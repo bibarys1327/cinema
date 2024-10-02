@@ -1,9 +1,10 @@
 import { CssBaseline } from "@mui/material";
 import type { Metadata } from "next";
-
 import React from "react";
 import Navbar from "./_components/navbar";
 import "./globals.css";
+import { StoreProvider } from "./StoreProvider";
+import ToggleColorModeProvider from "./ToggleColorMode";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,16 +17,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`flex h-full antialiased`}>
-        <CssBaseline />
-        <Navbar />
+    <StoreProvider>
+      <ToggleColorModeProvider>
+        <html lang="en">
+          <body className={`flex h-full antialiased`}>
+            <CssBaseline />
+            <Navbar />
 
-        <main className="grow p-[2em]">
-          <div className="h-[70px]" />
-          {children}
-        </main>
-      </body>
-    </html>
+            <main className="grow p-[2em]">
+              <div className="h-[70px]" />
+              {children}
+            </main>
+          </body>
+        </html>
+      </ToggleColorModeProvider>
+    </StoreProvider>
   );
 }
